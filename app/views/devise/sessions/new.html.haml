@@ -1,0 +1,22 @@
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .field
+    = f.label :email, class: "label"
+    %p.control.has-icons-left.has-icons-right
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: "input", type: "email", placeholder: "example@email.com"
+      %span.icon.is-small.is-left
+        %i.fa.fa-envelope
+      %span.icon.is-small.is-right
+        %i.fas.fa-check
+  .field
+    = f.label "Senha", class: "label"
+    %p.control.has-icons-left
+      = f.password_field :password, autocomplete: "current-password", class: "input", type: "password"
+      %span.icon.is-small.is-left
+        %i.fas.fa-lock
+  - if devise_mapping.rememberable?
+    .field
+      = f.check_box :remember_me
+      = f.label "Lembrar-me", class: "checkbox"
+  .actions
+    = f.submit "Login", class: "button is-info is-outlined"
+= render "devise/shared/links"

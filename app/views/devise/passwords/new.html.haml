@@ -1,0 +1,13 @@
+%h1.label.is-large &gt; Esqueceu sua senha?
+= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+  = render "devise/shared/error_messages", resource: resource
+  .field
+    = f.label :email, class: "label"
+    %p.control.has-icons-left.has-icons-right
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: "input", type: "email", placeholder: "example@email.com"
+      %span.icon.is-small.is-left
+        %i.fas.fa-envelope
+      %span.icon.is-small.is-right
+        %i.fas.fa-check
+  .actions
+    = f.submit "Enviar instruções de redefinição de senha", class: "button is-info is-outlined"

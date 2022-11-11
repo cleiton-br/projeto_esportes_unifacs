@@ -1,0 +1,37 @@
+%h1.label.is-large &gt; Editar Cadastro
+= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+  = render "devise/shared/error_messages", resource: resource
+  .field
+    = f.label :email, class: "label"
+    %p.control.has-icons-left
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: "input is-link", type: "email", placeholder: "example@email.com"
+      %span.icon.is-small.is-left
+        %i.fa.fa-envelope
+  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+    %div
+      Currently waiting confirmation for: #{resource.unconfirmed_email}
+  .field
+    = f.label "Nova Senha", class: "label"
+    %p.control.has-icons-left
+      = f.password_field :password, autocomplete: "new-password", class: "input is-info", type: "password"
+      - if @minimum_password_length
+        %br/
+        %em
+          = @minimum_password_length
+          characters minimum
+        %span.icon.is-small.is-left
+          %i.fas.fa-lock
+  .field
+    = f.label "Confirmar Nova Senha", class: "label"
+    %p.control.has-icons-left
+      = f.password_field :password_confirmation, autocomplete: "new-password", class: "input is-info", type: "password"
+      %span.icon.is-small.is-left
+        %i.fas.fa-lock
+  .field
+    = f.label "Senha Atual", class: "label"
+    %i.help (Precisamos da sua senha atual pra realizar a alteração)
+    = f.password_field :current_password, autocomplete: "current-password", class: "input", type: "password"
+  .is-flex.is-justify-content-space-between
+    = f.submit "Atualizar conta", class: "button is-info is-outlined"
+    = button_to "Apagar minha conta", registration_path(resource_name), data: { confirm: "Você tem certeza?" }, method: :delete, class: "button is-danger is-outlined"
+  = link_to "Voltar", :back, class: "button is-light"

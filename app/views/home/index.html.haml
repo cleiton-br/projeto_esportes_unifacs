@@ -1,0 +1,8 @@
+%section.hero.is-info.is-fullheight-with-navbar
+  .hero-body
+    - name = current_user.presence ? current_user.name : "Visitante!"
+    .columns.is-half
+      .column.is-offset-one-quarter
+        %h1.title.is-3
+          Olá #{name}, seja bem-vindo!
+        .column.is-offset-one-quarter

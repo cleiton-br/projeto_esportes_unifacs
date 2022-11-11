@@ -1,0 +1,36 @@
+%h1.label.is-large &gt; Formulário de Cadastro
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = render "devise/shared/error_messages", resource: resource
+  .field
+    = f.label "Nome", class: "label"
+    %p.control.has-icons-left
+      = f.text_field :name, class: "input", placeholder: "João Silva"
+      %span.icon.is-small.is-left
+        %i.fa.fa-user
+  .field
+    = f.label :email, class: "label"
+    %p.control.has-icons-left
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: "input", type: "email", placeholder: "example@email.com"
+      %span.icon.is-small.is-left
+        %i.fa.fa-envelope
+  .field
+    = f.label :Senha, class: "label"
+    %p.control.has-icons-left
+      - if @minimum_password_length
+        %em
+          (#{@minimum_password_length} characters minimum)
+      = f.password_field :password, autocomplete: "new-password", class: "input", type: "password"
+      %span.icon.is-small.is-left
+        %i.fas.fa-lock
+  .field
+    = f.label :Confirme_Senha, class: "label"
+    %p.control.has-icons-left
+      = f.password_field :password_confirmation, autocomplete: "new-password", class: "input", type: "password"
+      %span.icon.is-small.is-left
+        %i.fas.fa-lock
+  %div
+    .navbar-start
+      .actions
+        = f.submit "Realizar cadastro", class: "button is-info is-outlined"
+      .navbar-end
+        = render "devise/shared/links"

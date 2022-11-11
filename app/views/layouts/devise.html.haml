@@ -1,0 +1,27 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title ProjetoStreaming
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    .navbar-brand
+      %a.navbar-item{:href => "#"}
+        %img{:height => "28", :src => "https://bulma.io/images/bulma-logo.png", :width => "112"}/
+      %a.navbar-burger{"aria-expanded" => "false", "aria-label" => "menu", "data-target" => "navbarBasicExample", :role => "button"}
+        %span{"aria-hidden" => "true"}
+        %span{"aria-hidden" => "true"}
+        %span{"aria-hidden" => "true"}
+      #navbarBasicExample.navbar-menu
+        .navbar-start
+          = link_to 'Home', root_path, class: "navbar-item"
+    .hero.is-info.is-fullheight-with-navbar
+      .hero-body.is-medium
+        .column.is-half.is-offset-one-quarter
+          .card
+            .card-content.has-background-light
+              = yield
